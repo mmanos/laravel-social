@@ -48,12 +48,6 @@ Publish the default config file to your application so you can make modification
 $ php artisan config:publish mmanos/laravel-social
 ```
 
-Run the database migrations for this package.
-
-```console
-$ php artisan migrate --package="mmanos/laravel-social"
-```
-
 Add your service provider credentials to the published config file: `app/config/packages/mmanos/laravel-social/config.php`
 
 ## Basic Usage
@@ -123,10 +117,12 @@ Simply create a link to the built-in controller to initiate a log in flow. The u
 
 If an existing user is already linked to the provider account, they will be logged in as that user.
 
-If an existing user is not found for the provider account, a new user record will be created and then a link to the provider account will be made.
+If an existing user is not found for the provider account, a new user record will be created and then a link to the provider account will be made before they are logged in as that user.
 
 ```php
-<a href="{{ action('Mmanos\Social\SocialController@getLogin', array('twitter')) }}">Log in with Twitter</a>
+<a href="{{ action('Mmanos\Social\SocialController@getLogin', array('twitter')) }}">
+	Log in with Twitter
+</a>
 ```
 
 To customize where the user is redirected to after the log in flow, add `onsuccess` and `onerror` parameters.
@@ -139,19 +135,21 @@ To customize where the user is redirected to after the log in flow, add `onsucce
 
 > **Note:** The default redirect location is to `/`.
 
-#### Connecting A Social Account
+#### Connecting A Social Account Flow
 
-You can associate a social provider account to an existing user if they are already logged in.
+You can also associate a social provider account to an existing user if they are already logged in.
 
 ```php
-<a href="{{ action('Mmanos\Social\SocialController@getConnect', array('twitter')) }}">Connect Your Twitter Account</a>
+<a href="{{ action('Mmanos\Social\SocialController@getConnect', array('twitter')) }}">
+	Connect Your Twitter Account
+</a>
 ```
 
 > **Note:** This action also supports the `onsuccess` and `onerror` parameters.
 
 #### Working With Users And Providers
 
-You can fetch all providers linked with a user.
+You can fetch all providers linked to a user.
 
 ```php
 $providers = Auth::user()->providers;
@@ -197,6 +195,8 @@ If you want to customize the logic used to create a user during the social login
 
 > **Note:** Make sure to return a numeric primary key when finished.
 
+> **Note:** The information passed in the `$data` parameter is the data returned from the `fetch_user_info` functions for each provider in the config file.
+
 #### Provider User Information
 
 To customize which data you want to retrieve from a social provider account, modify the `fetch_user_info` key for each provider in the config file.
@@ -209,6 +209,7 @@ To customize which data you want to retrieve from a social provider account, mod
 			'email'      => null,
 			'first_name' => array_get(explode(' ', array_get($result, 'name')), 0),
 			'last_name'  => array_get(explode(' ', array_get($result, 'name')), 1)
+			'location'   => array_get($result, 'location'),
 		);
 	},
 ```
@@ -225,6 +226,7 @@ To customize the validation rules, modify the `user_validation` key in the confi
 'user_validation' => array(
 	'email'      => 'required|email',
 	'first_name' => 'required',
+	'location'   => 'required',
 ),
 ```
 
