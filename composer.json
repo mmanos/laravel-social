@@ -1,0 +1,28 @@
+{
+    "name": "mmanos/laravel-social",
+    "description": "A social login package for Laravel 4.",
+    "keywords": ["laravel", "social", "login", "providers", "oauth"],
+    "authors": [
+        {
+            "name": "Mark Manos",
+            "email": "mark@airpac.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.4.0",
+        "illuminate/support": ">=4.1",
+        "lusitanian/oauth": "~0.3"
+    },
+    "autoload": {
+        "classmap": [
+            "src/migrations",
+            "src/controllers",
+            "src/models"
+        ],
+        "psr-0": {
+            "Mmanos\\Social\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "license": "MIT"
+}
