@@ -1,8 +1,8 @@
 # Social Login Package for Laravel 4
 
-This package is a simple Laravel 4 service provider for [Lusitanian/PHPoAuthLib](https://github.com/Lusitanian/PHPoAuthLib) which provides oAuth support in PHP 5.3+ and is very easy to integrate with any project which requires an oAuth client.
+This package is a Laravel 4 service provider for [Lusitanian/PHPoAuthLib](https://github.com/Lusitanian/PHPoAuthLib) which provides oAuth support in PHP 5.3+ and is very easy to integrate with any project which requires an oAuth client.
 
-In addition, you may take advantage of the optional controller and model to make very easy to:
+In addition, you may take advantage of the optional controller and model to make it very easy to:
 
 * Log in with a social provider
 * Connect an existing user record with a social provider
@@ -216,7 +216,7 @@ To customize which data you want to retrieve from a social provider account, mod
 
 > **Note:** This function also allows you to normalize the user data returned by each of the social providers by mapping their fields to fields you want to store in your user record.
 
-#### Social Login Validation
+#### New User Validation
 
 You can configure the social login flow to validate the user information returned by the social provider. This way you can ensure that all of the data you require for a new user is properly obtained and in the correct format.
 
@@ -234,7 +234,7 @@ To customize the validation rules, modify the `user_validation` key in the confi
 
 ## Social Buttons
 
-This package provides some convenient css that allows you to create nice social buttons. It is built for use with the Twitter Bootstrap framework.
+This package provides some convenient css that allows you to create nice social buttons. It is built for use with the [Twitter Bootstrap](https://github.com/twbs/bootstrap) and [Font Awesome](http://fontawesome.io/) frameworks.
 
 #### Publish The Assets
 
