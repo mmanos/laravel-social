@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\View;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Request;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Validator;
 
@@ -34,8 +35,15 @@ class SocialController extends Controller
 			App::abort(404);
 		}
 		
+		$referer = Request::header('referer', '/');
+		$referer_parts = parse_url($referer);
+		$onerror = array_get($referer_parts, 'path');
+		if (array_get($referer_parts, 'query')) {
+			$onerror .= '?' . array_get($referer_parts, 'query');
+		}
+		
 		Session::put('mmanos.social.onsuccess', Input::get('onsuccess', '/'));
-		Session::put('mmanos.social.onerror', Input::get('onerror', '/'));
+		Session::put('mmanos.social.onerror', Input::get('onerror', $onerror));
 		
 		if (Auth::check()) {
 			return Redirect::to(Session::get('mmanos.social.onsuccess', '/'));
@@ -351,8 +359,15 @@ class SocialController extends Controller
 			App::abort(404);
 		}
 		
-		Session::put('mmanos.social.onsuccess', Input::get('onsuccess', '/'));
-		Session::put('mmanos.social.onerror', Input::get('onerror', '/'));
+		$referer = Request::header('referer', '/');
+		$referer_parts = parse_url($referer);
+		$onboth = array_get($referer_parts, 'path');
+		if (array_get($referer_parts, 'query')) {
+			$onboth .= '?' . array_get($referer_parts, 'query');
+		}
+		
+		Session::put('mmanos.social.onsuccess', Input::get('onsuccess', $onboth));
+		Session::put('mmanos.social.onerror', Input::get('onerror', $onboth));
 		
 		if (!Auth::check()) {
 			return Redirect::to(Session::get('mmanos.social.onerror', '/'))
@@ -522,13 +537,16 @@ class SocialController extends Controller
 			
 			$user_provider->access_token = $access_token;
 			$user_provider->save();
-			
-			return Redirect::to(Session::get('mmanos.social.onsuccess', '/'));
+		}
+		else {
+			$this->linkProvider(Auth::id(), $provider, $provider_id, $access_token);
 		}
 		
-		$this->linkProvider(Auth::id(), $provider, $provider_id, $access_token);
-		
-		return Redirect::to(Session::get('mmanos.social.onsuccess', '/'));
+		return Redirect::to(Session::get('mmanos.social.onsuccess', '/'))
+			->with(
+				Config::get('laravel-social::success_flash_var'),
+				'You have successfully connected your account.'
+			);
 	}
 	
 	/**

@@ -144,4 +144,16 @@ return array(
 
 	'error_flash_var' => 'error',
 
+	/*
+	|--------------------------------------------------------------------------
+	| Success Flash Variable Name
+	|--------------------------------------------------------------------------
+	|
+	| Define the variable name to use when flashing a success to session before
+	| redirecting after a social provider account was successfully connected.
+	|
+	*/
+
+	'success_flash_var' => 'success',
+
 );

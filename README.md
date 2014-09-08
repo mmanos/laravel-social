@@ -14,7 +14,7 @@ See the documentation for Lusitanian/PHPoAuthLib for the [list of supported serv
 
 ## Installation Via Composer
 
-Add this to you composer.json file, in the require object:
+Add this to your composer.json file, in the require object:
 
 ```javascript
 "mmanos/laravel-social": "dev-master"
@@ -99,14 +99,14 @@ $ php artisan migrate --package="mmanos/laravel-social"
 
 #### Model Setup
 
-Add the ProvidersTrait to your User model definition.
+Add the SocialTrait to your User model definition.
 
 ```php
-use Mmanos\Social\ProvidersTrait;
+use Mmanos\Social\SocialTrait;
 
 class User extends Eloquent
 {
-	use ProvidersTrait;
+	use SocialTrait;
 	
 }
 ```
@@ -120,7 +120,7 @@ If an existing user is already linked to the provider account, they will be logg
 If an existing user is not found for the provider account, a new user record will be created and then a link to the provider account will be made before they are logged in as that user.
 
 ```php
-<a href="{{ action('Mmanos\Social\SocialController@getLogin', array('twitter')) }}">
+<a href="{{ route('social-login', array('twitter')) }}">
 	Log in with Twitter
 </a>
 ```
@@ -128,7 +128,7 @@ If an existing user is not found for the provider account, a new user record wil
 To customize where the user is redirected to after the log in flow, add `onsuccess` and `onerror` parameters.
 
 ```php
-<a href="{{ action('Mmanos\Social\SocialController@getLogin', array('twitter')) }}?onsuccess=/account&onerror=/login">
+<a href="{{ route('social-login', array('twitter')) }}?onsuccess=/account&onerror=/login">
 	Log in with Twitter
 </a>
 ```
@@ -140,7 +140,7 @@ To customize where the user is redirected to after the log in flow, add `onsucce
 You can also associate a social provider account to an existing user if they are already logged in.
 
 ```php
-<a href="{{ action('Mmanos\Social\SocialController@getConnect', array('twitter')) }}">
+<a href="{{ route('social-connect', array('twitter')) }}">
 	Connect Your Twitter Account
 </a>
 ```

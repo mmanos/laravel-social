@@ -30,9 +30,9 @@ class Provider extends Model
 	{
 		$access_token = $this->access_token;
 		
-		$service = Facade\Social::service($this->provider);
+		$service = Facades\Social::service($this->provider);
 		
-		if (2 === Facade\Social::oauthSpec($this->provider)) {
+		if (2 === Facades\Social::oauthSpec($this->provider)) {
 			$token = new StdOAuth2Token;
 			$token->setAccessToken(array_get($access_token, 'token'));
 		}

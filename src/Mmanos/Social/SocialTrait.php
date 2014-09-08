@@ -1,6 +1,6 @@
 <?php namespace Mmanos\Social;
 
-trait ProvidersTrait
+trait SocialTrait
 {
 	/**
 	 * Return the social providers associated with this user.
