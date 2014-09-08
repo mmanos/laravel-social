@@ -133,7 +133,7 @@ To customize where the user is redirected to after the log in flow, add `onsucce
 </a>
 ```
 
-> **Note:** The default redirect location is to `/`.
+> **Note:** The default redirect location is to the `referer` header. Otherwise `/`.
 
 #### Connecting A Social Account Flow
 
