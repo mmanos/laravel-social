@@ -253,10 +253,10 @@ $ php artisan asset:publish mmanos/laravel-social
 #### Building Buttons
 
 ```php
-<a href="{{ action('Mmanos\Social\SocialController@getLogin', array('twitter')) }}" class="btn btn-social btn-twitter">
+<a href="{{ route('social-login', array('twitter')) }}" class="btn btn-social btn-twitter">
 	<i class="fa fa-twitter"></i> Log in with Twitter
 </a>
-<a href="{{ action('Mmanos\Social\SocialController@getLogin', array('twitter')) }}" class="btn btn-social-icon btn-twitter">
+<a href="{{ route('social-login', array('twitter')) }}" class="btn btn-social-icon btn-twitter">
 	<i class="fa fa-twitter"></i>
 </a>
 ```
