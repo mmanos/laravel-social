@@ -62,7 +62,7 @@ class Social
 		
 		return $this->factory->createService(
 			ucfirst($provider),
-			new Credentials($client_id, $client_secret, $url ?: URL::full()),
+			new Credentials($client_id, $client_secret, $url ?: URL::current()),
 			$this->storage,
 			$scope
 		);
