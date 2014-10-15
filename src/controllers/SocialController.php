@@ -64,6 +64,10 @@ class SocialController extends Controller
 		
 		try {
 			$service = Social::service($provider);
+			
+			if (Config::get('laravel-social::providers.' . strtolower($provider) . '.offline')) {
+				$service->setAccessType('offline');
+			}
 		} catch (Exception $e) {
 			App::abort(404);
 		}
@@ -389,6 +393,10 @@ class SocialController extends Controller
 		
 		try {
 			$service = Social::service($provider);
+			
+			if (Config::get('laravel-social::providers.' . strtolower($provider) . '.offline')) {
+				$service->setAccessType('offline');
+			}
 		} catch (Exception $e) {
 			App::abort(404);
 		}

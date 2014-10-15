@@ -71,6 +71,7 @@ return array(
 			'client_id'       => '',
 			'client_secret'   => '',
 			'scope'           => array('userinfo_email', 'userinfo_profile'),
+			'offline'         => false,
 			'fetch_user_info' => function ($service) {
 				$result = json_decode($service->request('https://www.googleapis.com/oauth2/v1/userinfo'), true);
 				return array(
