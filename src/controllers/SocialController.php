@@ -104,7 +104,10 @@ class SocialController extends Controller
 			}
 			
 			return $this->processLogin($provider, $service, array(
-				'token' => $token->getAccessToken(),
+				'token'         => $token->getAccessToken(),
+				'refresh_token' => $token->getRefreshToken(),
+				'end_of_life'   => $token->getEndOfLife(),
+				'extra_params'  => $token->getExtraParams(),
 			));
 		}
 		
@@ -137,8 +140,11 @@ class SocialController extends Controller
 			}
 			
 			return $this->processLogin($provider, $service, array(
-				'token'  => $token->getAccessToken(),
-				'secret' => $token->getAccessTokenSecret(),
+				'token'         => $token->getAccessToken(),
+				'secret'        => $token->getAccessTokenSecret(),
+				'refresh_token' => $token->getRefreshToken(),
+				'end_of_life'   => $token->getEndOfLife(),
+				'extra_params'  => $token->getExtraParams(),
 			));
 		}
 		
