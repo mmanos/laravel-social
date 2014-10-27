@@ -12,10 +12,16 @@
             "email": "rgat.randy@gmail.com"
         }
     ],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:ChaosPower/PHPoAuthLib.git"
+        }
+    ],
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": ">=4.1",
-        "lusitanian/oauth": "~0.3"
+        "chaospower/oauth": "~0.3"
     },
     "autoload": {
         "classmap": [
