@@ -1,11 +1,15 @@
 {
-    "name": "mmanos/laravel-social",
+    "name": "chaospower/laravel-social",
     "description": "A social login package for Laravel 4.",
     "keywords": ["laravel", "social", "login", "providers", "oauth"],
     "authors": [
         {
             "name": "Mark Manos",
             "email": "mark@airpac.com"
+        },
+        {
+            "name": "Randy Glenn Aguirre",
+            "email": "rgat.randy@gmail.com"
         }
     ],
     "require": {
