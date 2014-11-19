@@ -13,7 +13,7 @@ class LaravelSocialCreateProvidersTable extends Migration
 	public function up()
 	{
 		$table_name = Config::get('laravel-social::table', 'user_providers');
-		
+
 		Schema::create($table_name, function ($table) {
 			$table->increments('id');
 			$table->integer('user_id');
@@ -21,12 +21,12 @@ class LaravelSocialCreateProvidersTable extends Migration
 			$table->string('provider_id');
 			$table->text('access_token');
 			$table->timestamps();
-			
+
 			$table->unique(array('provider', 'provider_id'));
 			$table->index(array('user_id', 'provider'));
 		});
 	}
-	
+
 	/**
 	 * Reverse the migrations.
 	 *
@@ -35,7 +35,7 @@ class LaravelSocialCreateProvidersTable extends Migration
 	public function down()
 	{
 		$table_name = Config::get('laravel-social::table', 'user_providers');
-		
+
 		Schema::drop($table_name);
 	}
 }

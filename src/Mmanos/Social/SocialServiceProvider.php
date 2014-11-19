@@ -12,7 +12,7 @@ class SocialServiceProvider extends ServiceProvider
 	 * @var bool
 	 */
 	protected $defer = false;
-	
+
 	/**
 	 * Bootstrap the application events.
 	 *
@@ -21,7 +21,7 @@ class SocialServiceProvider extends ServiceProvider
 	public function boot()
 	{
 		$this->package('mmanos/laravel-social');
-		
+
 		if ($route = Config::get('laravel-social::route')) {
 			Route::get($route . '/login/{provider}', array(
 				'as'   => 'social-login',
@@ -34,7 +34,7 @@ class SocialServiceProvider extends ServiceProvider
 			Route::controller($route, 'Mmanos\Social\SocialController');
 		}
 	}
-	
+
 	/**
 	 * Register the service provider.
 	 *
@@ -46,7 +46,7 @@ class SocialServiceProvider extends ServiceProvider
 			return new \Mmanos\Social\Social;
 		});
 	}
-	
+
 	/**
 	 * Get the services provided by the provider.
 	 *

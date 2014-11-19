@@ -1,17 +1,21 @@
 {
-    "name": "mmanos/laravel-social",
+    "name": "chaospower/laravel-social",
     "description": "A social login package for Laravel 4.",
     "keywords": ["laravel", "social", "login", "providers", "oauth"],
     "authors": [
         {
             "name": "Mark Manos",
             "email": "mark@airpac.com"
+        },
+        {
+            "name": "Randy Glenn Aguirre",
+            "email": "rgat.randy@gmail.com"
         }
     ],
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": ">=4.1",
-        "lusitanian/oauth": "~0.3"
+        "chaospower/phpoauthlib": "0.1.*@dev"
     },
     "autoload": {
         "classmap": [
