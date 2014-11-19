@@ -41,6 +41,7 @@ return array(
 			'client_id'       => '',
 			'client_secret'   => '',
 			'scope'           => array('email'),
+			'api_version'	  => 'v2.2',
 			'fetch_user_info' => function ($service) {
 				$result = json_decode($service->request('/me'), true);
 				return array(
