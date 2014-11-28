@@ -44,7 +44,7 @@ class Social
 	 * @return \OAuth\Common\Service\AbstractService
 	 * @throws \Exception
 	 */
-	public function service($provider, $url = null, $scope = null, $apiVersion = null)
+	public function service($provider, $url = null, $scope = null, $api_version = null)
 	{
 		$info = Config::get('laravel-social::providers.' . strtolower($provider));
 
@@ -55,7 +55,7 @@ class Social
 		$client_id		= array_get($info, 'client_id');
 		$client_secret	= array_get($info, 'client_secret');
 		$scope			= is_null($scope) ? array_get($info, 'scope') : $scope;
-		$apiVersion		= is_null($apiVersion) ? array_get($info,'api_version') : $apiVersion;
+		$api_version		= is_null($api_version) ? array_get($info,'api_version') : $api_version;
 
 		if (empty($client_id) || empty($client_secret)) {
 			throw new Exception('Missing client id/secret for Social service: ' . $provider);
@@ -67,7 +67,7 @@ class Social
 			$this->storage,
 			$scope,
 			null,
-			$apiVersion
+			$api_version
 		);
 	}
 
