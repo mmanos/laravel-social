@@ -271,7 +271,7 @@ class SocialController extends Controller
 	 */
 	public function getComplete()
 	{
-		$user_data = Session::pull('mmanos.social.pending');
+		$user_data = Session::get('mmanos.social.pending');
 		if (empty($user_data) || !is_array($user_data)) {
 			return Redirect::to(Session::pull('mmanos.social.onerror', '/'))
 				->with(
@@ -280,7 +280,7 @@ class SocialController extends Controller
 				);
 		}
 		
-		$failed_fields = Session::pull('mmanos.social.failed_fields');
+		$failed_fields = Session::get('mmanos.social.failed_fields');
 		if (empty($failed_fields) || !is_array($failed_fields)) {
 			return Redirect::to(Session::pull('mmanos.social.onerror', '/'))
 				->with(
