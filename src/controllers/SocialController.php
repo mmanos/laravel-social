@@ -302,7 +302,7 @@ class SocialController extends Controller
 	 */
 	public function postComplete()
 	{
-		$user_data = Session::pull('mmanos.social.pending');
+		$user_data = Session::get('mmanos.social.pending');
 		if (empty($user_data) || !is_array($user_data)) {
 			return Redirect::to(Session::pull('mmanos.social.onerror', '/'))
 				->with(
