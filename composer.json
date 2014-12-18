@@ -15,7 +15,7 @@
     "require": {
         "php": ">=5.4.0",
         "illuminate/support": "~4|~5",
-        "chaospower/phpoauthlib": "~0.3"
+        "chaospower/phpoauthlib": "~0.3.6"
     },
     "autoload": {
         "classmap": [
