@@ -89,10 +89,11 @@ It has these requirements:
 
 #### Migration
 
-Run the database migrations for this package. This will create a `user_providers` table.
+Publish and run the database migrations for this package. This will create a `user_providers` table.
 
 ```console
-$ php artisan migrate --package="mmanos/laravel-social"
+$ php artisan migrate:publish mmanos/laravel-social
+$ php artisan migrate
 ```
 
 > **Note:** You can change the default table name used to store the user provider information by changing the value of the `table` key in the config file.
